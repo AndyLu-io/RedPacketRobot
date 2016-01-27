@@ -22,5 +22,12 @@
         android:layout_below="@+id/start_monitor"
         android:text="@string/stop_monitor"/>
 
+    <TextView
+        android:id="@+id/back_tip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/start_monitor"
+        android:layout_centerHorizontal="true"
+        android:text="@string/begin_tip"/>
 
 </RelativeLayout>

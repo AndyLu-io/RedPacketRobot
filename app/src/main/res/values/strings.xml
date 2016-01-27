@@ -2,4 +2,5 @@
     <string name="app_name">RedPacketRobot</string>
     <string name="start_monitor">Start</string>
     <string name="stop_monitor">Stop</string>
+    <string name="begin_tip">0</string>
 </resources>

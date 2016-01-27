@@ -11,11 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements View.OnClickListener,IMonitorCallback{
     private static final String TAG = "MainActivity";
     private Button start_monitor,stop_monitor;
     private MonitorService monitorService=null;
+    private TextView back_tip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class MainActivity extends Activity implements View.OnClickListener,IMoni
     private void initView(){
         start_monitor=(Button)findViewById(R.id.start_monitor);
         stop_monitor=(Button)findViewById(R.id.stop_monitor);
+        back_tip=(TextView)findViewById(R.id.back_tip);
         start_monitor.setOnClickListener(this);
         stop_monitor.setOnClickListener(this);
     }
@@ -37,8 +40,7 @@ public class MainActivity extends Activity implements View.OnClickListener,IMoni
         switch (v.getId()){
             case R.id.start_monitor:
                 Log.i(TAG, "start_monitor-click");
-                //startService(monitorIntent);
-
+                startService(monitorIntent);
                 bindService(monitorIntent,serviceConnection, Context.BIND_AUTO_CREATE);
                 if (monitorService!=null){
                     monitorService.startMonitor(0,this);
@@ -61,7 +63,7 @@ public class MainActivity extends Activity implements View.OnClickListener,IMoni
 
     @Override
     public void monitorBack(int num) {
-        Log.d(TAG, String.valueOf(num));
+        back_tip.setText(String.valueOf(num));
     }
 
     private ServiceConnection serviceConnection=new ServiceConnection() {
